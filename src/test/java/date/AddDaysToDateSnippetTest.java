@@ -46,6 +46,7 @@ public class AddDaysToDateSnippetTest {
   */
   @Test
   void testAddDaysToDate() throws ParseException {
+    AddDaysToDateSnippet classDate = new AddDaysToDateSnippet();
     DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 
     String dateStr = "January 1, 2022";
@@ -54,8 +55,14 @@ public class AddDaysToDateSnippetTest {
     String dateStrAfter = "January 3, 2022";
     Date dateAfterTwoDaysExpected = format.parse(dateStrAfter);
 
-    Date dateAfterTwoDaysActual = AddDaysToDateSnippet.addDaysToDate(date, 2);
+    Date dateAfterTwoDaysActual = classDate.addDaysToDate(date, 2);
     Assertions.assertEquals(dateAfterTwoDaysExpected, dateAfterTwoDaysActual);
+  }
+
+  @Test
+  void testAddDaysToDateNull() throws ParseException {
+    Date dateAfterTwoDaysActual = AddDaysToDateSnippet.addDaysToDate(null, 2);
+    Assertions.assertEquals(dateAfterTwoDaysActual, null);
   }
 
   /**
@@ -68,5 +75,12 @@ public class AddDaysToDateSnippetTest {
 
     LocalDate dateAfterTwoDaysActual = AddDaysToDateSnippet.addDaysToLocalDate(date, 2);
     Assertions.assertEquals(dateAfterTwoDaysExpected, dateAfterTwoDaysActual);
+  }
+
+  @Test
+  void testAddDaysToLocalDateNull() {
+    LocalDate date = null;
+    LocalDate dateAfterTwoDaysActual = AddDaysToDateSnippet.addDaysToLocalDate(date, 2);
+    Assertions.assertEquals(dateAfterTwoDaysActual, null);
   }
 }

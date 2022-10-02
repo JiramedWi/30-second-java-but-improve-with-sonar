@@ -38,7 +38,8 @@ class Base64EncodeSnippetTest {
    */
   @Test
   void testBase64Encoding() {
-    var encodedString = Base64EncodeSnippet.encodeBase64("TestString");
+    Base64EncodeSnippet base64EncodeSnippet = new Base64EncodeSnippet();
+    var encodedString = base64EncodeSnippet.encodeBase64("TestString");
     assertEquals("VGVzdFN0cmluZw==",encodedString);
   }
 
@@ -47,7 +48,8 @@ class Base64EncodeSnippetTest {
    */
   @Test
   void testEmptyBase64Encoding() {
-    var encodedString = Base64EncodeSnippet.encodeBase64("");
+    Base64EncodeSnippet base64EncodeSnippetEmpty = new Base64EncodeSnippet();
+    var encodedString = base64EncodeSnippetEmpty.encodeBase64("");
     assertEquals("",encodedString);
   }
 }
